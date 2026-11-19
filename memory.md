@@ -44,3 +44,18 @@
 - **Testing & Verification:**
   - 11 unit & integration tests passing in `backend/tests/` (PDF extraction, DOCX extraction, TXT extraction, chunking, embeddings, FAISS vector store, API endpoints).
   - End-to-end lifecycle verification test (`test_e2e_phase1.py`) passing with 100% success rate.
+
+
+## Phase 2 Implementation Summary (2026-11-19)
+
+### 1. Completed Deliverables
+- **Semantic Retrieval Service:** Built `RetrievalService` providing cosine similarity search against FAISS `IndexFlatIP`, configurable $K$ and thresholding, and document subset filtering.
+- **Gemini Service:** Implemented `GeminiService` using official `google-genai` SDK with model fallback logic (`gemini-3.1-flash-lite`, `gemini-3.8-flash`, `gemini-flash-latest`) to withstand upstream demand spikes.
+- **Grounded RAG Engine:** Built `RAGService` with prompt templating, strict grounding rules, automatic numbered citation parsing (`[1]`, `[2]`), provenance mapping to chunk and page numbers, and explicit negative fallback assertion for queries lacking context.
+- **REST Endpoints:** Added `POST /api/v1/search/semantic` and `POST /api/v1/rag/query`.
+- **Frontend Research Workspace:**
+  - Built interactive 3-panel Research Workspace ([WorkspacePage.jsx](file:///c:/Users/meshr/Documents/1.%20SPIT/Projects/DocuMind/frontend/src/pages/WorkspacePage.jsx)).
+  - Built [MessageItem.jsx](file:///c:/Users/meshr/Documents/1.%20SPIT/Projects/DocuMind/frontend/src/components/chat/MessageItem.jsx) with clickable citation chips, confidence indicator, and source badges.
+  - Built [PassageInspector.jsx](file:///c:/Users/meshr/Documents/1.%20SPIT/Projects/DocuMind/frontend/src/components/chat/PassageInspector.jsx) showing chunk text, match percentage, page numbers, and chunk IDs with interactive highlight sync.
+  - Added document scope filter to toggle between corpus-wide search and targeted document search.
+- **Verification:** All 16 automated tests passed, including `test_live_rag.py` verifying real retrieval and response generation via Google Gemini API.

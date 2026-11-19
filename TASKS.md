@@ -37,21 +37,21 @@ This document tracks progress across the four development phases. Each phase mus
 ---
 
 ## Phase 2: RAG Pipeline and Research Workspace
-- [ ] **Task 2.1: Semantic Retrieval Engine**
-  - [ ] Implement `RetrievalService` with query embedding, FAISS top-K lookup, score thresholding, and document-level filtering.
-  - [ ] Add unit tests for retrieval scoring and metadata filtering.
-- [ ] **Task 2.2: Gemini LLM Integration**
-  - [ ] Implement `GeminiService` integrating Google Gemini API via official SDK.
-  - [ ] Handle API key validation, timeouts, retries, and rate limit handling.
-- [ ] **Task 2.3: Grounded RAG Pipeline**
-  - [ ] Implement `RAGService` with prompt assembly, strict evidence grounding, and negative assertion fallback when context is absent.
-  - [ ] Implement citation extraction and verification linking chunk IDs to document page numbers.
-  - [ ] Build FastAPI endpoint: `POST /api/v1/rag/query`.
-- [ ] **Task 2.4: Research Workspace UI**
-  - [ ] Build conversational interface with chat messages, user/assistant bubbles, and typing states.
-  - [ ] Build interactive citation cards and right-panel source passage inspector.
-  - [ ] Implement document selection filter for targeted search.
-  - [ ] Verify end-to-end RAG question answering with citations.
+- [x] **Task 2.1: Semantic Retrieval Engine**
+  - [x] Implement `RetrievalService` with query embedding, FAISS top-K lookup, score thresholding, and document-level filtering.
+  - [x] Add unit tests for retrieval scoring and metadata filtering.
+- [x] **Task 2.2: Gemini LLM Integration**
+  - [x] Implement `GeminiService` integrating Google Gemini API via official SDK (`google-genai`).
+  - [x] Handle API key validation, timeouts, retries, and rate limit handling.
+- [x] **Task 2.3: Grounded RAG Pipeline**
+  - [x] Implement `RAGService` with prompt assembly, strict evidence grounding, and negative assertion fallback when context is absent.
+  - [x] Implement citation extraction and verification linking chunk IDs to document page numbers.
+  - [x] Build FastAPI endpoints: `POST /api/v1/rag/query` and `POST /api/v1/search/semantic`.
+- [x] **Task 2.4: Research Workspace UI**
+  - [x] Build conversational interface with chat messages, user/assistant bubbles, and typing states.
+  - [x] Build interactive citation cards and right-panel source passage inspector.
+  - [x] Implement document selection filter for targeted search.
+  - [x] Verify end-to-end RAG question answering with citations.
 
 ---
 
