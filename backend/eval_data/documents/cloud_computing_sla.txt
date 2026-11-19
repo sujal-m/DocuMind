@@ -1,0 +1,30 @@
+# Enterprise Cloud Infrastructure Service Level Agreement (SLA)
+Document Reference: SLA-2025-V3
+Effective Date: January 1, 2025
+
+1. Service Commitment & Availability
+CloudCore Systems warrants a Monthly Uptime Percentage of at least 99.95% during any monthly billing cycle. Service availability is measured 24 hours a day, 7 days a week, excluding scheduled maintenance windows. 
+
+Scheduled maintenance occurs every second Sunday between 02:00 UTC and 04:00 UTC and requires 72 hours prior notification to the Customer via dashboard alert and email.
+
+2. Service Credits and Penalties
+If CloudCore fails to meet the Monthly Uptime Percentage, Customer is eligible for a Service Credit calculated as follows:
+- Monthly Uptime between 99.00% and 99.94%: 10% Service Credit applied to next month's invoice.
+- Monthly Uptime between 95.00% and 98.99%: 25% Service Credit applied to next month's invoice.
+- Monthly Uptime below 95.00%: 50% Service Credit applied to next month's invoice.
+
+Service credits are non-refundable and can only be applied against future billing charges. Claims must be submitted within 30 days of the end of the billing cycle in which the incident occurred.
+
+3. Incident Severity and Response Times
+CloudCore commits to the following initial response times based on incident severity:
+- Severity 1 (Critical Outage): Core infrastructure down, revenue-impacting. Response time: Within 15 minutes. 24x7 coverage.
+- Severity 2 (Major Degradation): High latency, partial service failure with workaround available. Response time: Within 1 hour.
+- Severity 3 (Minor Defect): Non-critical feature impairment. Response time: Within 4 business hours.
+- Severity 4 (General Inquiry): Configuration questions and enhancement requests. Response time: Within 1 business day.
+
+4. Exclusions and Force Majeure
+The Service Level Agreement does not apply to performance issues or downtime resulting from:
+a) Customer configurations, custom code, or unsupported third-party software.
+b) Denial of Service (DDoS) attacks exceeding 500 Gbps where Customer has not purchased Enterprise Shield protection.
+c) DNS failures outside CloudCore's authoritative nameservers.
+d) Force majeure events including civil unrest, natural disasters, and global telecommunication backbone severed cables.

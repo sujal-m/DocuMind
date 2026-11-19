@@ -1,0 +1,56 @@
+[
+  {
+    "query_id": "eval_q1",
+    "query": "What is the monthly uptime percentage commitment and when does scheduled maintenance occur?",
+    "target_document": "cloud_computing_sla.txt",
+    "ground_truth_keywords": ["99.95%", "uptime", "maintenance", "Sunday"],
+    "reference_answer": "CloudCore warrants a Monthly Uptime Percentage of at least 99.95%. Scheduled maintenance occurs every second Sunday between 02:00 UTC and 04:00 UTC with 72 hours prior notification.",
+    "is_answerable": true,
+    "expected_citations": ["cloud_computing_sla.txt"]
+  },
+  {
+    "query_id": "eval_q2",
+    "query": "What service credits does a customer receive if monthly uptime drops to 93%?",
+    "target_document": "cloud_computing_sla.txt",
+    "ground_truth_keywords": ["Service Credit", "below 95.00%", "50%"],
+    "reference_answer": "If monthly uptime drops below 95.00% (such as 93%), the customer receives a 50% Service Credit applied to next month's invoice.",
+    "is_answerable": true,
+    "expected_citations": ["cloud_computing_sla.txt"]
+  },
+  {
+    "query_id": "eval_q3",
+    "query": "What are the rules and constraints regarding Human-in-the-Loop oversight in Tier-1 high-stakes workflows?",
+    "target_document": "ai_ethics_guidelines.txt",
+    "ground_truth_keywords": ["Human-in-the-Loop", "Tier-1", "medical", "$50,000"],
+    "reference_answer": "Autonomous AI decision-making without direct human oversight is strictly prohibited in Tier-1 high-stakes workflows. Medical recommendations require verification by a licensed medical practitioner, financial loan rejections above $50,000 require human underwriter sign-off within 24 hours, and moderation flags support human appeal within 48 hours.",
+    "is_answerable": true,
+    "expected_citations": ["ai_ethics_guidelines.txt"]
+  },
+  {
+    "query_id": "eval_q4",
+    "query": "What is the daily meal per diem and when are itemized receipts required?",
+    "target_document": "employee_travel_policy.txt",
+    "ground_truth_keywords": ["per diem", "$85", "itemized receipts", "$25"],
+    "reference_answer": "The daily meal per diem cap is $85 per day ($20 for breakfast, $25 for lunch, $40 for dinner). Individual itemized receipts are required for any single meal expense exceeding $25.",
+    "is_answerable": true,
+    "expected_citations": ["employee_travel_policy.txt"]
+  },
+  {
+    "query_id": "eval_q5",
+    "query": "What flight booking class is permitted for international flights exceeding 10 continuous flight hours?",
+    "target_document": "employee_travel_policy.txt",
+    "ground_truth_keywords": ["Business Class", "10 continuous flight hours", "COO"],
+    "reference_answer": "Business Class is permitted for flights exceeding 10 continuous flight hours, subject to written approval by the Chief Operating Officer (COO).",
+    "is_answerable": true,
+    "expected_citations": ["employee_travel_policy.txt"]
+  },
+  {
+    "query_id": "eval_q6",
+    "query": "What are the guidelines for quantum computing cryptographic keys?",
+    "target_document": null,
+    "ground_truth_keywords": [],
+    "reference_answer": "The uploaded documents do not contain information regarding quantum computing cryptographic keys.",
+    "is_answerable": false,
+    "expected_citations": []
+  }
+]

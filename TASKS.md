@@ -79,28 +79,28 @@ This document tracks progress across the four development phases. Each phase mus
 ---
 
 ## Phase 4: Evaluation, Testing and Deployment
-- [ ] **Task 4.1: Benchmark Evaluation Dataset**
-  - [ ] Create reproducible golden evaluation dataset (`backend/eval_data/`): sample documents, benchmark queries, expected relevant chunk IDs, and reference answers.
-- [ ] **Task 4.2: Retrieval Evaluation Engine**
-  - [ ] Implement automated calculation of Precision@K, Recall@K, Mean Reciprocal Rank (MRR), and NDCG.
-  - [ ] Measure retrieval latency profiling.
-- [ ] **Task 4.3: Answer Quality Evaluation Engine**
-  - [ ] Implement rule-based evaluation (citation verification, hallucination red flags).
-  - [ ] Implement LLM-as-a-judge evaluation for faithfulness, context relevance, and answer relevance.
-  - [ ] Build evaluation endpoints: `POST /api/v1/evaluation/run`, `GET /api/v1/evaluation/results`.
-- [ ] **Task 4.4: Evaluation Dashboard UI**
-  - [ ] Build frontend Evaluation page with metric summary cards, latency charts, and evaluation run trigger.
-  - [ ] Display detailed per-query evaluation breakdown table.
-- [ ] **Task 4.5: Automated Testing Suite**
-  - [ ] Write unit tests for extraction, chunking, embeddings, vector store, and RAG.
-  - [ ] Write integration tests for API endpoints with mock Gemini calls and real-key toggle.
-  - [ ] Run test suite and ensure 100% passing tests.
-- [ ] **Task 4.6: Dockerization & Production Packaging**
-  - [ ] Create production backend `Dockerfile`.
-  - [ ] Create production frontend `Dockerfile` (multi-stage build with Nginx).
-  - [ ] Create `docker-compose.yml` with persistent storage volumes and healthcheck endpoints.
-  - [ ] Verify end-to-end startup via Docker Compose.
-- [ ] **Task 4.7: Documentation & Final Verification**
-  - [ ] Complete comprehensive `README.md` with architectural diagrams, API docs, and step-by-step setup guide.
-  - [ ] Review against all 15 acceptance criteria.
+- [x] **Task 4.1: Benchmark Evaluation Dataset**
+  - [x] Create reproducible golden evaluation dataset (`backend/eval_data/`): sample documents, benchmark queries, expected relevant chunk IDs, and reference answers.
+- [x] **Task 4.2: Retrieval Evaluation Engine**
+  - [x] Implement automated calculation of Precision@K, Recall@K, Mean Reciprocal Rank (MRR), and NDCG.
+  - [x] Measure retrieval latency profiling.
+- [x] **Task 4.3: Answer Quality Evaluation Engine**
+  - [x] Implement rule-based evaluation (citation verification, hallucination red flags).
+  - [x] Implement LLM-as-a-judge evaluation for faithfulness, context relevance, and answer relevance.
+  - [x] Build evaluation endpoints: `POST /api/v1/evaluation/run`, `GET /api/v1/evaluation/results`.
+- [x] **Task 4.4: Evaluation Dashboard UI**
+  - [x] Build frontend Evaluation page with metric summary cards, latency charts, and evaluation run trigger.
+  - [x] Display detailed per-query evaluation breakdown table.
+- [x] **Task 4.5: Automated Testing Suite**
+  - [x] Write unit tests for extraction, chunking, embeddings, vector store, and RAG.
+  - [x] Write integration tests for API endpoints with mock Gemini calls and real-key toggle.
+  - [x] Run test suite and ensure 100% passing tests.
+- [x] **Task 4.6: Dockerization & Production Packaging**
+  - [x] Create production backend `Dockerfile`.
+  - [x] Create production frontend `Dockerfile` (multi-stage build with Nginx).
+  - [x] Create `docker-compose.yml` with persistent storage volumes and healthcheck endpoints.
+  - [x] Verify end-to-end startup via Docker Compose.
+- [x] **Task 4.7: Documentation & Final Verification**
+  - [x] Complete comprehensive `README.md` with architectural diagrams, API docs, and step-by-step setup guide.
+  - [x] Review against all 15 acceptance criteria.
 

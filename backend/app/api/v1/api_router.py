@@ -4,6 +4,7 @@ from backend.app.api.v1.search import router as search_router
 from backend.app.api.v1.rag import router as rag_router
 from backend.app.api.v1.agent import router as agent_router
 from backend.app.api.v1.conversations import router as conversations_router
+from backend.app.api.v1.evaluation import router as evaluation_router
 
 api_v1_router = APIRouter(prefix="/api/v1")
 api_v1_router.include_router(documents_router)
@@ -11,4 +12,11 @@ api_v1_router.include_router(search_router)
 api_v1_router.include_router(rag_router)
 api_v1_router.include_router(agent_router)
 api_v1_router.include_router(conversations_router)
+api_v1_router.include_router(evaluation_router)
+
+@api_v1_router.get("/health", tags=["System"])
+def v1_health_check():
+    return {"status": "healthy", "api_version": "v1"}
+
+
 

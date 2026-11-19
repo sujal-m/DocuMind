@@ -84,3 +84,40 @@
   - Updated [WorkspacePage.jsx](file:///c:/Users/meshr/Documents/1.%20SPIT/Projects/DocuMind/frontend/src/pages/WorkspacePage.jsx) with agent tool calling execution indicators and multi-turn context retention.
 - **Verification:**
   - 21 passing automated tests in `backend/tests/` including `test_agent_tools.py` and `test_live_agent.py` exercising real Gemini tool calling and follow-up conversational memory.
+
+
+## Phase 4 Implementation Summary (2026-11-19)
+
+### 1. Completed Deliverables
+- **Benchmark Evaluation Dataset:**
+  - Seeded 3 representative domain documents in `backend/eval_data/documents/`: `cloud_computing_sla.txt` (SLA commitments, maintenance windows, credit tiers), `ai_ethics_guidelines.txt` (AI governance, HITL oversight, fairness audits), and `employee_travel_policy.txt` (meal per diem, flight booking standards, receipt thresholds).
+  - Designed golden QA dataset in `backend/eval_data/golden_dataset.json` covering answerable queries, grounded keyword verification, and negative fallback rejection cases.
+- **Retrieval Evaluation Engine:**
+  - Implemented `EvaluationService.evaluate_retrieval_query()` calculating real retrieval metrics:
+    - **Precision@K**: $\frac{|Retrieved \cap Relevant|}{K}$
+    - **Recall@K**: $\frac{|Retrieved \cap Relevant|}{|Total\ Relevant\ in\ Corpus|}$
+    - **Mean Reciprocal Rank (MRR)**: Reciprocal rank of first relevant retrieved chunk.
+    - **NDCG@K**: Normalized Discounted Cumulative Gain against ideal ranking.
+    - **Latency Profiling**: Microsecond-accurate retrieval latency benchmarking.
+- **Answer Quality Evaluation Engine:**
+  - Rule-based evaluation: Citation presence, citation provenance validity, length validation, and negative rejection correctness for out-of-domain/unanswerable queries.
+  - LLM-as-a-judge: Impartial Gemini evaluation measuring Faithfulness (0-1), Context Relevance (0-1), and Answer Relevance (0-1) with structured rationale.
+  - Resilience: Automatic heuristic fallback ensures evaluation continues even during external rate limits.
+- **Evaluation REST Endpoints:**
+  - `POST /api/v1/evaluation/run`: Runs full benchmark suite across all test cases and persists summary.
+  - `GET /api/v1/evaluation/results`: Retrieves latest evaluation run metrics from disk.
+  - `GET /api/v1/evaluation/benchmark`: Returns golden QA test questions.
+- **Evaluation Dashboard UI:**
+  - Built interactive benchmark dashboard ([EvaluationPage.jsx](file:///c:/Users/meshr/Documents/1.%20SPIT/Projects/DocuMind/frontend/src/pages/EvaluationPage.jsx)).
+  - Metric summary cards: Precision@K, Recall@K, MRR, NDCG, Average Latency, Faithfulness, Answer Relevance, and Citation Integrity.
+  - Interactive tabs: Detailed retrieval breakdown table with collapsible passage inspection, answer/LLM judge scorecard with rationale, and golden dataset explorer.
+  - Live execution controls: Top-K selector, LLM Judge toggle, and run button with animated progress.
+- **Production Packaging & Dockerization:**
+  - `backend/Dockerfile`: Python 3.12-slim container with health check and directory layout.
+  - `frontend/Dockerfile`: Multi-stage build (Node 20 build stage -> Nginx Alpine runtime) with client-side SPA routing and backend proxying.
+  - `docker-compose.yml`: Multi-container orchestration with persistent volume bindings and dependent service health checks.
+  - Updated `.env.example` and healthcheck endpoints (`/health` and `/api/v1/health`).
+- **Comprehensive Testing & Verification:**
+  - 26 passing automated pytest tests in `backend/tests/` with 100% pass rate.
+  - Production frontend build (`npm run build`) passing with 0 warnings.
+

@@ -12,6 +12,11 @@ class DocumentRepository:
     def get_by_hash(self, file_hash: str) -> Optional[Document]:
         return self.db.query(Document).filter(Document.file_hash == file_hash).first()
 
+    def get_by_name(self, filename: str) -> Optional[Document]:
+        return self.db.query(Document).filter(
+            (Document.original_name == filename) | (Document.filename == filename)
+        ).first()
+
     def get_all(self, skip: int = 0, limit: int = 100) -> List[Document]:
         return (
             self.db.query(Document)

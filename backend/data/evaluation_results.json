@@ -1,0 +1,494 @@
+{
+  "run_id": "8912f490",
+  "timestamp": "2026-11-19T08:23:00.348705+00:00",
+  "total_queries": 6,
+  "k": 5,
+  "mean_precision_at_k": 0.1667,
+  "mean_recall_at_k": 1.0,
+  "mean_mrr": 0.7222,
+  "mean_ndcg": 0.75,
+  "avg_latency_ms": 30.67,
+  "mean_faithfulness": 0.1667,
+  "mean_context_relevance": 0.0833,
+  "mean_answer_relevance": 0.75,
+  "citation_accuracy_pct": 100.0,
+  "negative_rejection_accuracy_pct": 100.0,
+  "retrieval_results": [
+    {
+      "query_id": "eval_q1",
+      "query": "What is the monthly uptime percentage commitment and when does scheduled maintenance occur?",
+      "target_document": "cloud_computing_sla.txt",
+      "k": 5,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "latency_ms": 32.6,
+      "retrieved_count": 5,
+      "relevant_count": 1,
+      "retrieved_passages": [
+        {
+          "chunk_id": "28baa690-063b-4b12-8157-27de62fbaf14",
+          "document_id": "5d4e1804-f8b2-47b6-af89-af67b901c9a8",
+          "document_name": "cloud_computing_sla.txt",
+          "page_number": 1,
+          "chunk_index": 0,
+          "content": "# Enterprise Cloud Infrastructure Service Level Agreement (SLA)\nDocument Reference: SLA-2025-V3\nEffective Date: January 1, 2025\n\n1. Service Commitment & Availability\nCloudCore Systems warrants a Monthly Uptime Percentage of at least 99.95% during any monthly billing cycle. Service availability is measured 24 hours a day, 7 days a week, excluding scheduled maintenance windows. \n\nScheduled maintenance occurs every second Sunday between 02:00 UTC and 04:00 UTC and requires 72 hours prior notification to the Customer via dashboard alert and email.\n\n2. Service Credits and Penalties\nIf CloudCore fails to meet the Monthly Uptime Percentage, Customer is eligible for a Service Credit calculated as follows:\n- Monthly Uptime between 99.00% and 99.94%: 10% Service Credit applied to next month's invoice.\n- Monthly Uptime between 95.00% and 98.99%: 25% Service Credit applied to next month's invoice.\n- Monthly Uptime below 95.00%: 50% Service Credit applied to next month's invoice.\n\nService credits are non-refundable and can only be applied against future billing charges. Claims must be submitted within 30 days of the end of the billing cycle in which the incident occurred.\n\n3. Incident Severity and Response Times\nCloudCore commits to the following initial response times based on incident severity:\n- Severity 1 (Critical Outage): Core infrastructure down, revenue-impacting. Response time: Within 15 minutes. 24x7 coverage.\n- Severity 2 (Major Degradation): High latency, partial service failure with workaround available. Response time: Within 1 hour.\n- Severity 3 (Minor Defect): Non-critical feature impairment. Response time: Within 4 business hours.\n- Severity 4 (General Inquiry): Configuration questions and enhancement requests. Response time: Within 1 business day.",
+          "similarity_score": 0.5879,
+          "token_count": 260
+        },
+        {
+          "chunk_id": "432e8e55-81a2-4323-bfb9-ce637f7a383a",
+          "document_id": "90d9160c-913b-4536-90e6-30e122ed2135",
+          "document_name": "employee_travel_policy.txt",
+          "page_number": 1,
+          "chunk_index": 1,
+          "content": "5. Expense Submission Deadlines and Auditing\n- All expense reimbursement claims must be submitted via the Concur portal within 30 calendar days from the last date of travel.\n- Failure to submit claims within 60 days results in permanent forfeiture of reimbursement rights.\n- The Finance Audit Team conducts monthly random audits on 15% of all submitted expense reports.",
+          "similarity_score": 0.2079,
+          "token_count": 59
+        },
+        {
+          "chunk_id": "0d9b33e9-d3d1-4f38-a972-281bdd30ecb2",
+          "document_id": "90d9160c-913b-4536-90e6-30e122ed2135",
+          "document_name": "employee_travel_policy.txt",
+          "page_number": 1,
+          "chunk_index": 0,
+          "content": "# Global Corporate Travel and Expense Reimbursement Policy\nDocument Reference: HR-TRV-2025\nEffective Date: March 1, 2025\n\n1. Policy Overview and Scope\nThis policy applies to all full-time employees, contractors, and executive leadership traveling on authorized business for the company. All business travel must be pre-approved by a Department Director at least 14 days prior to departure.\n\n2. Air Travel Booking Standards\n- Economy Class is mandatory for all domestic flights and international flights under 6 continuous hours in duration.\n- Premium Economy is permitted for international flights exceeding 6 hours.\n- Business Class is only permitted for flights exceeding 10 continuous flight hours, subject to written approval by the Chief Operating Officer (COO).\n- Flight bookings must be made through the corporate travel portal (TripLink) at least 14 days in advance to secure non-peak commercial fares.\n\n3. Lodging and Hotel Guidelines\n- Standard single hotel rooms should not exceed $220 per night in North America, \u20ac200 per night in Europe, or $180 per night in Asia-Pacific tier-1 cities.\n- Luxury hotels (5-star, suites, or boutique resorts) are non-reimbursable without prior Executive Committee authorization.\n- Hotel cancellation penalties caused by personal change of mind are the sole responsibility of the employee.\n\n4. Daily Meal and Per Diem Allowances\n- The daily meal per diem cap is $85 per day ($20 for breakfast, $25 for lunch, $40 for dinner).\n- Alcohol is non-reimbursable unless consumed during an authorized client entertainment dinner with prior manager sign-off.\n- Individual itemized receipts are required for any single meal expense exceeding $25. Credit card summary slips without itemization will be rejected.",
+          "similarity_score": 0.2018,
+          "token_count": 265
+        },
+        {
+          "chunk_id": "3a91ef90-4146-4079-b7f8-20f5d2c38973",
+          "document_id": "5d4e1804-f8b2-47b6-af89-af67b901c9a8",
+          "document_name": "cloud_computing_sla.txt",
+          "page_number": 1,
+          "chunk_index": 1,
+          "content": "4. Exclusions and Force Majeure\nThe Service Level Agreement does not apply to performance issues or downtime resulting from:\na) Customer configurations, custom code, or unsupported third-party software.\nb) Denial of Service (DDoS) attacks exceeding 500 Gbps where Customer has not purchased Enterprise Shield protection.\nc) DNS failures outside CloudCore's authoritative nameservers.\nd) Force majeure events including civil unrest, natural disasters, and global telecommunication backbone severed cables.",
+          "similarity_score": 0.1981,
+          "token_count": 67
+        },
+        {
+          "chunk_id": "4e44ec34-f427-467f-962d-eb24238f9d62",
+          "document_id": "796f7e19-065a-4779-8473-1acef1ad9681",
+          "document_name": "ai_ethics_guidelines.txt",
+          "page_number": 1,
+          "chunk_index": 1,
+          "content": "5. Explainability and Incident Reporting\n- High-stakes models must output feature attribution scores (SHAP or Integrated Gradients) explaining decision factors.\n- Severe AI hallucinations causing financial harm or regulatory breach must be reported to the AI Ethics Board within 12 hours of discovery.",
+          "similarity_score": 0.1108,
+          "token_count": 43
+        }
+      ]
+    },
+    {
+      "query_id": "eval_q2",
+      "query": "What service credits does a customer receive if monthly uptime drops to 93%?",
+      "target_document": "cloud_computing_sla.txt",
+      "k": 5,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "latency_ms": 27.75,
+      "retrieved_count": 5,
+      "relevant_count": 1,
+      "retrieved_passages": [
+        {
+          "chunk_id": "28baa690-063b-4b12-8157-27de62fbaf14",
+          "document_id": "5d4e1804-f8b2-47b6-af89-af67b901c9a8",
+          "document_name": "cloud_computing_sla.txt",
+          "page_number": 1,
+          "chunk_index": 0,
+          "content": "# Enterprise Cloud Infrastructure Service Level Agreement (SLA)\nDocument Reference: SLA-2025-V3\nEffective Date: January 1, 2025\n\n1. Service Commitment & Availability\nCloudCore Systems warrants a Monthly Uptime Percentage of at least 99.95% during any monthly billing cycle. Service availability is measured 24 hours a day, 7 days a week, excluding scheduled maintenance windows. \n\nScheduled maintenance occurs every second Sunday between 02:00 UTC and 04:00 UTC and requires 72 hours prior notification to the Customer via dashboard alert and email.\n\n2. Service Credits and Penalties\nIf CloudCore fails to meet the Monthly Uptime Percentage, Customer is eligible for a Service Credit calculated as follows:\n- Monthly Uptime between 99.00% and 99.94%: 10% Service Credit applied to next month's invoice.\n- Monthly Uptime between 95.00% and 98.99%: 25% Service Credit applied to next month's invoice.\n- Monthly Uptime below 95.00%: 50% Service Credit applied to next month's invoice.\n\nService credits are non-refundable and can only be applied against future billing charges. Claims must be submitted within 30 days of the end of the billing cycle in which the incident occurred.\n\n3. Incident Severity and Response Times\nCloudCore commits to the following initial response times based on incident severity:\n- Severity 1 (Critical Outage): Core infrastructure down, revenue-impacting. Response time: Within 15 minutes. 24x7 coverage.\n- Severity 2 (Major Degradation): High latency, partial service failure with workaround available. Response time: Within 1 hour.\n- Severity 3 (Minor Defect): Non-critical feature impairment. Response time: Within 4 business hours.\n- Severity 4 (General Inquiry): Configuration questions and enhancement requests. Response time: Within 1 business day.",
+          "similarity_score": 0.6158,
+          "token_count": 260
+        },
+        {
+          "chunk_id": "3a91ef90-4146-4079-b7f8-20f5d2c38973",
+          "document_id": "5d4e1804-f8b2-47b6-af89-af67b901c9a8",
+          "document_name": "cloud_computing_sla.txt",
+          "page_number": 1,
+          "chunk_index": 1,
+          "content": "4. Exclusions and Force Majeure\nThe Service Level Agreement does not apply to performance issues or downtime resulting from:\na) Customer configurations, custom code, or unsupported third-party software.\nb) Denial of Service (DDoS) attacks exceeding 500 Gbps where Customer has not purchased Enterprise Shield protection.\nc) DNS failures outside CloudCore's authoritative nameservers.\nd) Force majeure events including civil unrest, natural disasters, and global telecommunication backbone severed cables.",
+          "similarity_score": 0.2999,
+          "token_count": 67
+        },
+        {
+          "chunk_id": "0d9b33e9-d3d1-4f38-a972-281bdd30ecb2",
+          "document_id": "90d9160c-913b-4536-90e6-30e122ed2135",
+          "document_name": "employee_travel_policy.txt",
+          "page_number": 1,
+          "chunk_index": 0,
+          "content": "# Global Corporate Travel and Expense Reimbursement Policy\nDocument Reference: HR-TRV-2025\nEffective Date: March 1, 2025\n\n1. Policy Overview and Scope\nThis policy applies to all full-time employees, contractors, and executive leadership traveling on authorized business for the company. All business travel must be pre-approved by a Department Director at least 14 days prior to departure.\n\n2. Air Travel Booking Standards\n- Economy Class is mandatory for all domestic flights and international flights under 6 continuous hours in duration.\n- Premium Economy is permitted for international flights exceeding 6 hours.\n- Business Class is only permitted for flights exceeding 10 continuous flight hours, subject to written approval by the Chief Operating Officer (COO).\n- Flight bookings must be made through the corporate travel portal (TripLink) at least 14 days in advance to secure non-peak commercial fares.\n\n3. Lodging and Hotel Guidelines\n- Standard single hotel rooms should not exceed $220 per night in North America, \u20ac200 per night in Europe, or $180 per night in Asia-Pacific tier-1 cities.\n- Luxury hotels (5-star, suites, or boutique resorts) are non-reimbursable without prior Executive Committee authorization.\n- Hotel cancellation penalties caused by personal change of mind are the sole responsibility of the employee.\n\n4. Daily Meal and Per Diem Allowances\n- The daily meal per diem cap is $85 per day ($20 for breakfast, $25 for lunch, $40 for dinner).\n- Alcohol is non-reimbursable unless consumed during an authorized client entertainment dinner with prior manager sign-off.\n- Individual itemized receipts are required for any single meal expense exceeding $25. Credit card summary slips without itemization will be rejected.",
+          "similarity_score": 0.2351,
+          "token_count": 265
+        },
+        {
+          "chunk_id": "432e8e55-81a2-4323-bfb9-ce637f7a383a",
+          "document_id": "90d9160c-913b-4536-90e6-30e122ed2135",
+          "document_name": "employee_travel_policy.txt",
+          "page_number": 1,
+          "chunk_index": 1,
+          "content": "5. Expense Submission Deadlines and Auditing\n- All expense reimbursement claims must be submitted via the Concur portal within 30 calendar days from the last date of travel.\n- Failure to submit claims within 60 days results in permanent forfeiture of reimbursement rights.\n- The Finance Audit Team conducts monthly random audits on 15% of all submitted expense reports.",
+          "similarity_score": 0.1852,
+          "token_count": 59
+        },
+        {
+          "chunk_id": "09a510ae-0da5-42c0-9a23-c16f31171ba2",
+          "document_id": "796f7e19-065a-4779-8473-1acef1ad9681",
+          "document_name": "ai_ethics_guidelines.txt",
+          "page_number": 1,
+          "chunk_index": 0,
+          "content": "# Responsible AI Ethics and Governance Charter\nDocument Reference: AI-GOV-2025-01\nEffective Date: February 15, 2025\n\n1. Purpose and Guiding Principles\nThe purpose of this Charter is to establish operational safeguards for developing and deploying artificial intelligence models across enterprise operations. All AI systems must adhere to four cardinal pillars: Fairness, Transparency, Accountability, and Robustness.\n\n2. Fairness and Bias Mitigation\nAll datasets used for training or fine-tuning machine learning models must undergo statistical demographic parity tests before deployment.\n- Disparate impact ratio across protected groups must remain between 0.80 and 1.25.\n- Annual third-party bias audits are mandatory for any algorithm influencing hiring, credit decisions, or customer risk scoring.\n- When bias exceeds acceptable thresholds, the model must be placed in a canary containment mode or rolled back to an approved baseline.\n\n3. Human-in-the-Loop (HITL) Oversight\nAutonomous AI decision-making without direct human oversight is strictly prohibited in Tier-1 high-stakes workflows:\n- Medical triage and health recommendations require verification by a licensed medical practitioner.\n- Legal contract generation and financial loan rejections above $50,000 require human underwriter sign-off within 24 hours.\n- Automated moderation flags with user account suspension consequences must support human appeal within 48 hours.\n\n4. Data Privacy, Lineage, and Compliance\n- AI pipelines must comply fully with GDPR, CCPA, and ISO/IEC 42001 AI management standards.\n- Personal Identifiable Information (PII) must be masked using differential privacy techniques before ingestion into embedding stores or vector databases.\n- Models must not train on customer proprietary data unless an explicit opt-in data licensing consent agreement is executed.\n- Complete data lineage logs must be retained for at least 7 years for auditing purposes.",
+          "similarity_score": 0.1199,
+          "token_count": 271
+        }
+      ]
+    },
+    {
+      "query_id": "eval_q3",
+      "query": "What are the rules and constraints regarding Human-in-the-Loop oversight in Tier-1 high-stakes workflows?",
+      "target_document": "ai_ethics_guidelines.txt",
+      "k": 5,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "latency_ms": 34.38,
+      "retrieved_count": 5,
+      "relevant_count": 1,
+      "retrieved_passages": [
+        {
+          "chunk_id": "09a510ae-0da5-42c0-9a23-c16f31171ba2",
+          "document_id": "796f7e19-065a-4779-8473-1acef1ad9681",
+          "document_name": "ai_ethics_guidelines.txt",
+          "page_number": 1,
+          "chunk_index": 0,
+          "content": "# Responsible AI Ethics and Governance Charter\nDocument Reference: AI-GOV-2025-01\nEffective Date: February 15, 2025\n\n1. Purpose and Guiding Principles\nThe purpose of this Charter is to establish operational safeguards for developing and deploying artificial intelligence models across enterprise operations. All AI systems must adhere to four cardinal pillars: Fairness, Transparency, Accountability, and Robustness.\n\n2. Fairness and Bias Mitigation\nAll datasets used for training or fine-tuning machine learning models must undergo statistical demographic parity tests before deployment.\n- Disparate impact ratio across protected groups must remain between 0.80 and 1.25.\n- Annual third-party bias audits are mandatory for any algorithm influencing hiring, credit decisions, or customer risk scoring.\n- When bias exceeds acceptable thresholds, the model must be placed in a canary containment mode or rolled back to an approved baseline.\n\n3. Human-in-the-Loop (HITL) Oversight\nAutonomous AI decision-making without direct human oversight is strictly prohibited in Tier-1 high-stakes workflows:\n- Medical triage and health recommendations require verification by a licensed medical practitioner.\n- Legal contract generation and financial loan rejections above $50,000 require human underwriter sign-off within 24 hours.\n- Automated moderation flags with user account suspension consequences must support human appeal within 48 hours.\n\n4. Data Privacy, Lineage, and Compliance\n- AI pipelines must comply fully with GDPR, CCPA, and ISO/IEC 42001 AI management standards.\n- Personal Identifiable Information (PII) must be masked using differential privacy techniques before ingestion into embedding stores or vector databases.\n- Models must not train on customer proprietary data unless an explicit opt-in data licensing consent agreement is executed.\n- Complete data lineage logs must be retained for at least 7 years for auditing purposes.",
+          "similarity_score": 0.4651,
+          "token_count": 271
+        },
+        {
+          "chunk_id": "4e44ec34-f427-467f-962d-eb24238f9d62",
+          "document_id": "796f7e19-065a-4779-8473-1acef1ad9681",
+          "document_name": "ai_ethics_guidelines.txt",
+          "page_number": 1,
+          "chunk_index": 1,
+          "content": "5. Explainability and Incident Reporting\n- High-stakes models must output feature attribution scores (SHAP or Integrated Gradients) explaining decision factors.\n- Severe AI hallucinations causing financial harm or regulatory breach must be reported to the AI Ethics Board within 12 hours of discovery.",
+          "similarity_score": 0.2591,
+          "token_count": 43
+        },
+        {
+          "chunk_id": "3a91ef90-4146-4079-b7f8-20f5d2c38973",
+          "document_id": "5d4e1804-f8b2-47b6-af89-af67b901c9a8",
+          "document_name": "cloud_computing_sla.txt",
+          "page_number": 1,
+          "chunk_index": 1,
+          "content": "4. Exclusions and Force Majeure\nThe Service Level Agreement does not apply to performance issues or downtime resulting from:\na) Customer configurations, custom code, or unsupported third-party software.\nb) Denial of Service (DDoS) attacks exceeding 500 Gbps where Customer has not purchased Enterprise Shield protection.\nc) DNS failures outside CloudCore's authoritative nameservers.\nd) Force majeure events including civil unrest, natural disasters, and global telecommunication backbone severed cables.",
+          "similarity_score": 0.2432,
+          "token_count": 67
+        },
+        {
+          "chunk_id": "28baa690-063b-4b12-8157-27de62fbaf14",
+          "document_id": "5d4e1804-f8b2-47b6-af89-af67b901c9a8",
+          "document_name": "cloud_computing_sla.txt",
+          "page_number": 1,
+          "chunk_index": 0,
+          "content": "# Enterprise Cloud Infrastructure Service Level Agreement (SLA)\nDocument Reference: SLA-2025-V3\nEffective Date: January 1, 2025\n\n1. Service Commitment & Availability\nCloudCore Systems warrants a Monthly Uptime Percentage of at least 99.95% during any monthly billing cycle. Service availability is measured 24 hours a day, 7 days a week, excluding scheduled maintenance windows. \n\nScheduled maintenance occurs every second Sunday between 02:00 UTC and 04:00 UTC and requires 72 hours prior notification to the Customer via dashboard alert and email.\n\n2. Service Credits and Penalties\nIf CloudCore fails to meet the Monthly Uptime Percentage, Customer is eligible for a Service Credit calculated as follows:\n- Monthly Uptime between 99.00% and 99.94%: 10% Service Credit applied to next month's invoice.\n- Monthly Uptime between 95.00% and 98.99%: 25% Service Credit applied to next month's invoice.\n- Monthly Uptime below 95.00%: 50% Service Credit applied to next month's invoice.\n\nService credits are non-refundable and can only be applied against future billing charges. Claims must be submitted within 30 days of the end of the billing cycle in which the incident occurred.\n\n3. Incident Severity and Response Times\nCloudCore commits to the following initial response times based on incident severity:\n- Severity 1 (Critical Outage): Core infrastructure down, revenue-impacting. Response time: Within 15 minutes. 24x7 coverage.\n- Severity 2 (Major Degradation): High latency, partial service failure with workaround available. Response time: Within 1 hour.\n- Severity 3 (Minor Defect): Non-critical feature impairment. Response time: Within 4 business hours.\n- Severity 4 (General Inquiry): Configuration questions and enhancement requests. Response time: Within 1 business day.",
+          "similarity_score": 0.191,
+          "token_count": 260
+        },
+        {
+          "chunk_id": "0d9b33e9-d3d1-4f38-a972-281bdd30ecb2",
+          "document_id": "90d9160c-913b-4536-90e6-30e122ed2135",
+          "document_name": "employee_travel_policy.txt",
+          "page_number": 1,
+          "chunk_index": 0,
+          "content": "# Global Corporate Travel and Expense Reimbursement Policy\nDocument Reference: HR-TRV-2025\nEffective Date: March 1, 2025\n\n1. Policy Overview and Scope\nThis policy applies to all full-time employees, contractors, and executive leadership traveling on authorized business for the company. All business travel must be pre-approved by a Department Director at least 14 days prior to departure.\n\n2. Air Travel Booking Standards\n- Economy Class is mandatory for all domestic flights and international flights under 6 continuous hours in duration.\n- Premium Economy is permitted for international flights exceeding 6 hours.\n- Business Class is only permitted for flights exceeding 10 continuous flight hours, subject to written approval by the Chief Operating Officer (COO).\n- Flight bookings must be made through the corporate travel portal (TripLink) at least 14 days in advance to secure non-peak commercial fares.\n\n3. Lodging and Hotel Guidelines\n- Standard single hotel rooms should not exceed $220 per night in North America, \u20ac200 per night in Europe, or $180 per night in Asia-Pacific tier-1 cities.\n- Luxury hotels (5-star, suites, or boutique resorts) are non-reimbursable without prior Executive Committee authorization.\n- Hotel cancellation penalties caused by personal change of mind are the sole responsibility of the employee.\n\n4. Daily Meal and Per Diem Allowances\n- The daily meal per diem cap is $85 per day ($20 for breakfast, $25 for lunch, $40 for dinner).\n- Alcohol is non-reimbursable unless consumed during an authorized client entertainment dinner with prior manager sign-off.\n- Individual itemized receipts are required for any single meal expense exceeding $25. Credit card summary slips without itemization will be rejected.",
+          "similarity_score": 0.1694,
+          "token_count": 265
+        }
+      ]
+    },
+    {
+      "query_id": "eval_q4",
+      "query": "What is the daily meal per diem and when are itemized receipts required?",
+      "target_document": "employee_travel_policy.txt",
+      "k": 5,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "mrr": 0.3333,
+      "ndcg_at_k": 0.5,
+      "latency_ms": 30.7,
+      "retrieved_count": 5,
+      "relevant_count": 1,
+      "retrieved_passages": [
+        {
+          "chunk_id": "432e8e55-81a2-4323-bfb9-ce637f7a383a",
+          "document_id": "90d9160c-913b-4536-90e6-30e122ed2135",
+          "document_name": "employee_travel_policy.txt",
+          "page_number": 1,
+          "chunk_index": 1,
+          "content": "5. Expense Submission Deadlines and Auditing\n- All expense reimbursement claims must be submitted via the Concur portal within 30 calendar days from the last date of travel.\n- Failure to submit claims within 60 days results in permanent forfeiture of reimbursement rights.\n- The Finance Audit Team conducts monthly random audits on 15% of all submitted expense reports.",
+          "similarity_score": 0.2271,
+          "token_count": 59
+        },
+        {
+          "chunk_id": "28baa690-063b-4b12-8157-27de62fbaf14",
+          "document_id": "5d4e1804-f8b2-47b6-af89-af67b901c9a8",
+          "document_name": "cloud_computing_sla.txt",
+          "page_number": 1,
+          "chunk_index": 0,
+          "content": "# Enterprise Cloud Infrastructure Service Level Agreement (SLA)\nDocument Reference: SLA-2025-V3\nEffective Date: January 1, 2025\n\n1. Service Commitment & Availability\nCloudCore Systems warrants a Monthly Uptime Percentage of at least 99.95% during any monthly billing cycle. Service availability is measured 24 hours a day, 7 days a week, excluding scheduled maintenance windows. \n\nScheduled maintenance occurs every second Sunday between 02:00 UTC and 04:00 UTC and requires 72 hours prior notification to the Customer via dashboard alert and email.\n\n2. Service Credits and Penalties\nIf CloudCore fails to meet the Monthly Uptime Percentage, Customer is eligible for a Service Credit calculated as follows:\n- Monthly Uptime between 99.00% and 99.94%: 10% Service Credit applied to next month's invoice.\n- Monthly Uptime between 95.00% and 98.99%: 25% Service Credit applied to next month's invoice.\n- Monthly Uptime below 95.00%: 50% Service Credit applied to next month's invoice.\n\nService credits are non-refundable and can only be applied against future billing charges. Claims must be submitted within 30 days of the end of the billing cycle in which the incident occurred.\n\n3. Incident Severity and Response Times\nCloudCore commits to the following initial response times based on incident severity:\n- Severity 1 (Critical Outage): Core infrastructure down, revenue-impacting. Response time: Within 15 minutes. 24x7 coverage.\n- Severity 2 (Major Degradation): High latency, partial service failure with workaround available. Response time: Within 1 hour.\n- Severity 3 (Minor Defect): Non-critical feature impairment. Response time: Within 4 business hours.\n- Severity 4 (General Inquiry): Configuration questions and enhancement requests. Response time: Within 1 business day.",
+          "similarity_score": 0.2075,
+          "token_count": 260
+        },
+        {
+          "chunk_id": "0d9b33e9-d3d1-4f38-a972-281bdd30ecb2",
+          "document_id": "90d9160c-913b-4536-90e6-30e122ed2135",
+          "document_name": "employee_travel_policy.txt",
+          "page_number": 1,
+          "chunk_index": 0,
+          "content": "# Global Corporate Travel and Expense Reimbursement Policy\nDocument Reference: HR-TRV-2025\nEffective Date: March 1, 2025\n\n1. Policy Overview and Scope\nThis policy applies to all full-time employees, contractors, and executive leadership traveling on authorized business for the company. All business travel must be pre-approved by a Department Director at least 14 days prior to departure.\n\n2. Air Travel Booking Standards\n- Economy Class is mandatory for all domestic flights and international flights under 6 continuous hours in duration.\n- Premium Economy is permitted for international flights exceeding 6 hours.\n- Business Class is only permitted for flights exceeding 10 continuous flight hours, subject to written approval by the Chief Operating Officer (COO).\n- Flight bookings must be made through the corporate travel portal (TripLink) at least 14 days in advance to secure non-peak commercial fares.\n\n3. Lodging and Hotel Guidelines\n- Standard single hotel rooms should not exceed $220 per night in North America, \u20ac200 per night in Europe, or $180 per night in Asia-Pacific tier-1 cities.\n- Luxury hotels (5-star, suites, or boutique resorts) are non-reimbursable without prior Executive Committee authorization.\n- Hotel cancellation penalties caused by personal change of mind are the sole responsibility of the employee.\n\n4. Daily Meal and Per Diem Allowances\n- The daily meal per diem cap is $85 per day ($20 for breakfast, $25 for lunch, $40 for dinner).\n- Alcohol is non-reimbursable unless consumed during an authorized client entertainment dinner with prior manager sign-off.\n- Individual itemized receipts are required for any single meal expense exceeding $25. Credit card summary slips without itemization will be rejected.",
+          "similarity_score": 0.1845,
+          "token_count": 265
+        },
+        {
+          "chunk_id": "4e44ec34-f427-467f-962d-eb24238f9d62",
+          "document_id": "796f7e19-065a-4779-8473-1acef1ad9681",
+          "document_name": "ai_ethics_guidelines.txt",
+          "page_number": 1,
+          "chunk_index": 1,
+          "content": "5. Explainability and Incident Reporting\n- High-stakes models must output feature attribution scores (SHAP or Integrated Gradients) explaining decision factors.\n- Severe AI hallucinations causing financial harm or regulatory breach must be reported to the AI Ethics Board within 12 hours of discovery.",
+          "similarity_score": 0.0587,
+          "token_count": 43
+        },
+        {
+          "chunk_id": "09a510ae-0da5-42c0-9a23-c16f31171ba2",
+          "document_id": "796f7e19-065a-4779-8473-1acef1ad9681",
+          "document_name": "ai_ethics_guidelines.txt",
+          "page_number": 1,
+          "chunk_index": 0,
+          "content": "# Responsible AI Ethics and Governance Charter\nDocument Reference: AI-GOV-2025-01\nEffective Date: February 15, 2025\n\n1. Purpose and Guiding Principles\nThe purpose of this Charter is to establish operational safeguards for developing and deploying artificial intelligence models across enterprise operations. All AI systems must adhere to four cardinal pillars: Fairness, Transparency, Accountability, and Robustness.\n\n2. Fairness and Bias Mitigation\nAll datasets used for training or fine-tuning machine learning models must undergo statistical demographic parity tests before deployment.\n- Disparate impact ratio across protected groups must remain between 0.80 and 1.25.\n- Annual third-party bias audits are mandatory for any algorithm influencing hiring, credit decisions, or customer risk scoring.\n- When bias exceeds acceptable thresholds, the model must be placed in a canary containment mode or rolled back to an approved baseline.\n\n3. Human-in-the-Loop (HITL) Oversight\nAutonomous AI decision-making without direct human oversight is strictly prohibited in Tier-1 high-stakes workflows:\n- Medical triage and health recommendations require verification by a licensed medical practitioner.\n- Legal contract generation and financial loan rejections above $50,000 require human underwriter sign-off within 24 hours.\n- Automated moderation flags with user account suspension consequences must support human appeal within 48 hours.\n\n4. Data Privacy, Lineage, and Compliance\n- AI pipelines must comply fully with GDPR, CCPA, and ISO/IEC 42001 AI management standards.\n- Personal Identifiable Information (PII) must be masked using differential privacy techniques before ingestion into embedding stores or vector databases.\n- Models must not train on customer proprietary data unless an explicit opt-in data licensing consent agreement is executed.\n- Complete data lineage logs must be retained for at least 7 years for auditing purposes.",
+          "similarity_score": 0.0472,
+          "token_count": 271
+        }
+      ]
+    },
+    {
+      "query_id": "eval_q5",
+      "query": "What flight booking class is permitted for international flights exceeding 10 continuous flight hours?",
+      "target_document": "employee_travel_policy.txt",
+      "k": 5,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "latency_ms": 26.85,
+      "retrieved_count": 5,
+      "relevant_count": 1,
+      "retrieved_passages": [
+        {
+          "chunk_id": "0d9b33e9-d3d1-4f38-a972-281bdd30ecb2",
+          "document_id": "90d9160c-913b-4536-90e6-30e122ed2135",
+          "document_name": "employee_travel_policy.txt",
+          "page_number": 1,
+          "chunk_index": 0,
+          "content": "# Global Corporate Travel and Expense Reimbursement Policy\nDocument Reference: HR-TRV-2025\nEffective Date: March 1, 2025\n\n1. Policy Overview and Scope\nThis policy applies to all full-time employees, contractors, and executive leadership traveling on authorized business for the company. All business travel must be pre-approved by a Department Director at least 14 days prior to departure.\n\n2. Air Travel Booking Standards\n- Economy Class is mandatory for all domestic flights and international flights under 6 continuous hours in duration.\n- Premium Economy is permitted for international flights exceeding 6 hours.\n- Business Class is only permitted for flights exceeding 10 continuous flight hours, subject to written approval by the Chief Operating Officer (COO).\n- Flight bookings must be made through the corporate travel portal (TripLink) at least 14 days in advance to secure non-peak commercial fares.\n\n3. Lodging and Hotel Guidelines\n- Standard single hotel rooms should not exceed $220 per night in North America, \u20ac200 per night in Europe, or $180 per night in Asia-Pacific tier-1 cities.\n- Luxury hotels (5-star, suites, or boutique resorts) are non-reimbursable without prior Executive Committee authorization.\n- Hotel cancellation penalties caused by personal change of mind are the sole responsibility of the employee.\n\n4. Daily Meal and Per Diem Allowances\n- The daily meal per diem cap is $85 per day ($20 for breakfast, $25 for lunch, $40 for dinner).\n- Alcohol is non-reimbursable unless consumed during an authorized client entertainment dinner with prior manager sign-off.\n- Individual itemized receipts are required for any single meal expense exceeding $25. Credit card summary slips without itemization will be rejected.",
+          "similarity_score": 0.5932,
+          "token_count": 265
+        },
+        {
+          "chunk_id": "3a91ef90-4146-4079-b7f8-20f5d2c38973",
+          "document_id": "5d4e1804-f8b2-47b6-af89-af67b901c9a8",
+          "document_name": "cloud_computing_sla.txt",
+          "page_number": 1,
+          "chunk_index": 1,
+          "content": "4. Exclusions and Force Majeure\nThe Service Level Agreement does not apply to performance issues or downtime resulting from:\na) Customer configurations, custom code, or unsupported third-party software.\nb) Denial of Service (DDoS) attacks exceeding 500 Gbps where Customer has not purchased Enterprise Shield protection.\nc) DNS failures outside CloudCore's authoritative nameservers.\nd) Force majeure events including civil unrest, natural disasters, and global telecommunication backbone severed cables.",
+          "similarity_score": 0.1613,
+          "token_count": 67
+        },
+        {
+          "chunk_id": "09a510ae-0da5-42c0-9a23-c16f31171ba2",
+          "document_id": "796f7e19-065a-4779-8473-1acef1ad9681",
+          "document_name": "ai_ethics_guidelines.txt",
+          "page_number": 1,
+          "chunk_index": 0,
+          "content": "# Responsible AI Ethics and Governance Charter\nDocument Reference: AI-GOV-2025-01\nEffective Date: February 15, 2025\n\n1. Purpose and Guiding Principles\nThe purpose of this Charter is to establish operational safeguards for developing and deploying artificial intelligence models across enterprise operations. All AI systems must adhere to four cardinal pillars: Fairness, Transparency, Accountability, and Robustness.\n\n2. Fairness and Bias Mitigation\nAll datasets used for training or fine-tuning machine learning models must undergo statistical demographic parity tests before deployment.\n- Disparate impact ratio across protected groups must remain between 0.80 and 1.25.\n- Annual third-party bias audits are mandatory for any algorithm influencing hiring, credit decisions, or customer risk scoring.\n- When bias exceeds acceptable thresholds, the model must be placed in a canary containment mode or rolled back to an approved baseline.\n\n3. Human-in-the-Loop (HITL) Oversight\nAutonomous AI decision-making without direct human oversight is strictly prohibited in Tier-1 high-stakes workflows:\n- Medical triage and health recommendations require verification by a licensed medical practitioner.\n- Legal contract generation and financial loan rejections above $50,000 require human underwriter sign-off within 24 hours.\n- Automated moderation flags with user account suspension consequences must support human appeal within 48 hours.\n\n4. Data Privacy, Lineage, and Compliance\n- AI pipelines must comply fully with GDPR, CCPA, and ISO/IEC 42001 AI management standards.\n- Personal Identifiable Information (PII) must be masked using differential privacy techniques before ingestion into embedding stores or vector databases.\n- Models must not train on customer proprietary data unless an explicit opt-in data licensing consent agreement is executed.\n- Complete data lineage logs must be retained for at least 7 years for auditing purposes.",
+          "similarity_score": 0.1566,
+          "token_count": 271
+        },
+        {
+          "chunk_id": "432e8e55-81a2-4323-bfb9-ce637f7a383a",
+          "document_id": "90d9160c-913b-4536-90e6-30e122ed2135",
+          "document_name": "employee_travel_policy.txt",
+          "page_number": 1,
+          "chunk_index": 1,
+          "content": "5. Expense Submission Deadlines and Auditing\n- All expense reimbursement claims must be submitted via the Concur portal within 30 calendar days from the last date of travel.\n- Failure to submit claims within 60 days results in permanent forfeiture of reimbursement rights.\n- The Finance Audit Team conducts monthly random audits on 15% of all submitted expense reports.",
+          "similarity_score": 0.143,
+          "token_count": 59
+        },
+        {
+          "chunk_id": "28baa690-063b-4b12-8157-27de62fbaf14",
+          "document_id": "5d4e1804-f8b2-47b6-af89-af67b901c9a8",
+          "document_name": "cloud_computing_sla.txt",
+          "page_number": 1,
+          "chunk_index": 0,
+          "content": "# Enterprise Cloud Infrastructure Service Level Agreement (SLA)\nDocument Reference: SLA-2025-V3\nEffective Date: January 1, 2025\n\n1. Service Commitment & Availability\nCloudCore Systems warrants a Monthly Uptime Percentage of at least 99.95% during any monthly billing cycle. Service availability is measured 24 hours a day, 7 days a week, excluding scheduled maintenance windows. \n\nScheduled maintenance occurs every second Sunday between 02:00 UTC and 04:00 UTC and requires 72 hours prior notification to the Customer via dashboard alert and email.\n\n2. Service Credits and Penalties\nIf CloudCore fails to meet the Monthly Uptime Percentage, Customer is eligible for a Service Credit calculated as follows:\n- Monthly Uptime between 99.00% and 99.94%: 10% Service Credit applied to next month's invoice.\n- Monthly Uptime between 95.00% and 98.99%: 25% Service Credit applied to next month's invoice.\n- Monthly Uptime below 95.00%: 50% Service Credit applied to next month's invoice.\n\nService credits are non-refundable and can only be applied against future billing charges. Claims must be submitted within 30 days of the end of the billing cycle in which the incident occurred.\n\n3. Incident Severity and Response Times\nCloudCore commits to the following initial response times based on incident severity:\n- Severity 1 (Critical Outage): Core infrastructure down, revenue-impacting. Response time: Within 15 minutes. 24x7 coverage.\n- Severity 2 (Major Degradation): High latency, partial service failure with workaround available. Response time: Within 1 hour.\n- Severity 3 (Minor Defect): Non-critical feature impairment. Response time: Within 4 business hours.\n- Severity 4 (General Inquiry): Configuration questions and enhancement requests. Response time: Within 1 business day.",
+          "similarity_score": 0.1179,
+          "token_count": 260
+        }
+      ]
+    },
+    {
+      "query_id": "eval_q6",
+      "query": "What are the guidelines for quantum computing cryptographic keys?",
+      "target_document": null,
+      "k": 5,
+      "precision_at_k": 0.0,
+      "recall_at_k": 1.0,
+      "mrr": 0.0,
+      "ndcg_at_k": 0.0,
+      "latency_ms": 31.73,
+      "retrieved_count": 5,
+      "relevant_count": 0,
+      "retrieved_passages": [
+        {
+          "chunk_id": "09a510ae-0da5-42c0-9a23-c16f31171ba2",
+          "document_id": "796f7e19-065a-4779-8473-1acef1ad9681",
+          "document_name": "ai_ethics_guidelines.txt",
+          "page_number": 1,
+          "chunk_index": 0,
+          "content": "# Responsible AI Ethics and Governance Charter\nDocument Reference: AI-GOV-2025-01\nEffective Date: February 15, 2025\n\n1. Purpose and Guiding Principles\nThe purpose of this Charter is to establish operational safeguards for developing and deploying artificial intelligence models across enterprise operations. All AI systems must adhere to four cardinal pillars: Fairness, Transparency, Accountability, and Robustness.\n\n2. Fairness and Bias Mitigation\nAll datasets used for training or fine-tuning machine learning models must undergo statistical demographic parity tests before deployment.\n- Disparate impact ratio across protected groups must remain between 0.80 and 1.25.\n- Annual third-party bias audits are mandatory for any algorithm influencing hiring, credit decisions, or customer risk scoring.\n- When bias exceeds acceptable thresholds, the model must be placed in a canary containment mode or rolled back to an approved baseline.\n\n3. Human-in-the-Loop (HITL) Oversight\nAutonomous AI decision-making without direct human oversight is strictly prohibited in Tier-1 high-stakes workflows:\n- Medical triage and health recommendations require verification by a licensed medical practitioner.\n- Legal contract generation and financial loan rejections above $50,000 require human underwriter sign-off within 24 hours.\n- Automated moderation flags with user account suspension consequences must support human appeal within 48 hours.\n\n4. Data Privacy, Lineage, and Compliance\n- AI pipelines must comply fully with GDPR, CCPA, and ISO/IEC 42001 AI management standards.\n- Personal Identifiable Information (PII) must be masked using differential privacy techniques before ingestion into embedding stores or vector databases.\n- Models must not train on customer proprietary data unless an explicit opt-in data licensing consent agreement is executed.\n- Complete data lineage logs must be retained for at least 7 years for auditing purposes.",
+          "similarity_score": 0.2156,
+          "token_count": 271
+        },
+        {
+          "chunk_id": "4e44ec34-f427-467f-962d-eb24238f9d62",
+          "document_id": "796f7e19-065a-4779-8473-1acef1ad9681",
+          "document_name": "ai_ethics_guidelines.txt",
+          "page_number": 1,
+          "chunk_index": 1,
+          "content": "5. Explainability and Incident Reporting\n- High-stakes models must output feature attribution scores (SHAP or Integrated Gradients) explaining decision factors.\n- Severe AI hallucinations causing financial harm or regulatory breach must be reported to the AI Ethics Board within 12 hours of discovery.",
+          "similarity_score": 0.2026,
+          "token_count": 43
+        },
+        {
+          "chunk_id": "3a91ef90-4146-4079-b7f8-20f5d2c38973",
+          "document_id": "5d4e1804-f8b2-47b6-af89-af67b901c9a8",
+          "document_name": "cloud_computing_sla.txt",
+          "page_number": 1,
+          "chunk_index": 1,
+          "content": "4. Exclusions and Force Majeure\nThe Service Level Agreement does not apply to performance issues or downtime resulting from:\na) Customer configurations, custom code, or unsupported third-party software.\nb) Denial of Service (DDoS) attacks exceeding 500 Gbps where Customer has not purchased Enterprise Shield protection.\nc) DNS failures outside CloudCore's authoritative nameservers.\nd) Force majeure events including civil unrest, natural disasters, and global telecommunication backbone severed cables.",
+          "similarity_score": 0.1009,
+          "token_count": 67
+        },
+        {
+          "chunk_id": "28baa690-063b-4b12-8157-27de62fbaf14",
+          "document_id": "5d4e1804-f8b2-47b6-af89-af67b901c9a8",
+          "document_name": "cloud_computing_sla.txt",
+          "page_number": 1,
+          "chunk_index": 0,
+          "content": "# Enterprise Cloud Infrastructure Service Level Agreement (SLA)\nDocument Reference: SLA-2025-V3\nEffective Date: January 1, 2025\n\n1. Service Commitment & Availability\nCloudCore Systems warrants a Monthly Uptime Percentage of at least 99.95% during any monthly billing cycle. Service availability is measured 24 hours a day, 7 days a week, excluding scheduled maintenance windows. \n\nScheduled maintenance occurs every second Sunday between 02:00 UTC and 04:00 UTC and requires 72 hours prior notification to the Customer via dashboard alert and email.\n\n2. Service Credits and Penalties\nIf CloudCore fails to meet the Monthly Uptime Percentage, Customer is eligible for a Service Credit calculated as follows:\n- Monthly Uptime between 99.00% and 99.94%: 10% Service Credit applied to next month's invoice.\n- Monthly Uptime between 95.00% and 98.99%: 25% Service Credit applied to next month's invoice.\n- Monthly Uptime below 95.00%: 50% Service Credit applied to next month's invoice.\n\nService credits are non-refundable and can only be applied against future billing charges. Claims must be submitted within 30 days of the end of the billing cycle in which the incident occurred.\n\n3. Incident Severity and Response Times\nCloudCore commits to the following initial response times based on incident severity:\n- Severity 1 (Critical Outage): Core infrastructure down, revenue-impacting. Response time: Within 15 minutes. 24x7 coverage.\n- Severity 2 (Major Degradation): High latency, partial service failure with workaround available. Response time: Within 1 hour.\n- Severity 3 (Minor Defect): Non-critical feature impairment. Response time: Within 4 business hours.\n- Severity 4 (General Inquiry): Configuration questions and enhancement requests. Response time: Within 1 business day.",
+          "similarity_score": 0.0975,
+          "token_count": 260
+        },
+        {
+          "chunk_id": "0d9b33e9-d3d1-4f38-a972-281bdd30ecb2",
+          "document_id": "90d9160c-913b-4536-90e6-30e122ed2135",
+          "document_name": "employee_travel_policy.txt",
+          "page_number": 1,
+          "chunk_index": 0,
+          "content": "# Global Corporate Travel and Expense Reimbursement Policy\nDocument Reference: HR-TRV-2025\nEffective Date: March 1, 2025\n\n1. Policy Overview and Scope\nThis policy applies to all full-time employees, contractors, and executive leadership traveling on authorized business for the company. All business travel must be pre-approved by a Department Director at least 14 days prior to departure.\n\n2. Air Travel Booking Standards\n- Economy Class is mandatory for all domestic flights and international flights under 6 continuous hours in duration.\n- Premium Economy is permitted for international flights exceeding 6 hours.\n- Business Class is only permitted for flights exceeding 10 continuous flight hours, subject to written approval by the Chief Operating Officer (COO).\n- Flight bookings must be made through the corporate travel portal (TripLink) at least 14 days in advance to secure non-peak commercial fares.\n\n3. Lodging and Hotel Guidelines\n- Standard single hotel rooms should not exceed $220 per night in North America, \u20ac200 per night in Europe, or $180 per night in Asia-Pacific tier-1 cities.\n- Luxury hotels (5-star, suites, or boutique resorts) are non-reimbursable without prior Executive Committee authorization.\n- Hotel cancellation penalties caused by personal change of mind are the sole responsibility of the employee.\n\n4. Daily Meal and Per Diem Allowances\n- The daily meal per diem cap is $85 per day ($20 for breakfast, $25 for lunch, $40 for dinner).\n- Alcohol is non-reimbursable unless consumed during an authorized client entertainment dinner with prior manager sign-off.\n- Individual itemized receipts are required for any single meal expense exceeding $25. Credit card summary slips without itemization will be rejected.",
+          "similarity_score": 0.0733,
+          "token_count": 265
+        }
+      ]
+    }
+  ],
+  "answer_results": [
+    {
+      "query_id": "eval_q1",
+      "query": "What is the monthly uptime percentage commitment and when does scheduled maintenance occur?",
+      "is_answerable": true,
+      "generated_answer": "CloudCore Systems warrants a Monthly Uptime Percentage of at least 99.95% [1]. \n\nScheduled maintenance occurs every second Sunday of the month between 02:00 UTC and 04:00 UTC [1].",
+      "reference_answer": "CloudCore warrants a Monthly Uptime Percentage of at least 99.95%. Scheduled maintenance occurs every second Sunday between 02:00 UTC and 04:00 UTC with 72 hours prior notification.",
+      "citation_present": true,
+      "citation_valid": true,
+      "negative_rejection_correct": true,
+      "faithfulness": 0.0,
+      "context_relevance": 0.5,
+      "answer_relevance": 0.5,
+      "judge_rationale": "The model hallucinated the maintenance schedule as it was not present in the provided context, and the context only contained information regarding the uptime percentage."
+    },
+    {
+      "query_id": "eval_q2",
+      "query": "What service credits does a customer receive if monthly uptime drops to 93%?",
+      "is_answerable": true,
+      "generated_answer": "If the Monthly Uptime Percentage falls below 95.00%, the customer is eligible for a 50% Service Credit applied to the next month's invoice [1].",
+      "reference_answer": "If monthly uptime drops below 95.00% (such as 93%), the customer receives a 50% Service Credit applied to next month's invoice.",
+      "citation_present": true,
+      "citation_valid": true,
+      "negative_rejection_correct": true,
+      "faithfulness": 0.0,
+      "context_relevance": 0.0,
+      "answer_relevance": 1.0,
+      "judge_rationale": "The generated answer is unfaithful because the provided context does not contain information regarding service credit percentages or uptime thresholds, yet the model hallucinates these specific details."
+    },
+    {
+      "query_id": "eval_q3",
+      "query": "What are the rules and constraints regarding Human-in-the-Loop oversight in Tier-1 high-stakes workflows?",
+      "is_answerable": true,
+      "generated_answer": "According to the Responsible AI Ethics and Governance Charter, autonomous AI decision-making without direct human oversight is strictly prohibited in Tier-1 high-stakes workflows [1]. The specific rules and constraints for these workflows are as follows:\n\n*   **Medical Triage and Health Recommendations:** These require verification by a licensed medical practitioner [1].\n*   **Legal and Financial Decisions:** Legal contract generation and financial loan rejections exceeding $50,000 require sign-off by a human underwriter within 24 hours [1].\n*   **Automated Moderation:** Automated moderation flags that result in user account suspension must provide the user the ability to submit a human appeal within 48 hours [1].",
+      "reference_answer": "Autonomous AI decision-making without direct human oversight is strictly prohibited in Tier-1 high-stakes workflows. Medical recommendations require verification by a licensed medical practitioner, financial loan rejections above $50,000 require human underwriter sign-off within 24 hours, and moderation flags support human appeal within 48 hours.",
+      "citation_present": true,
+      "citation_valid": true,
+      "negative_rejection_correct": true,
+      "faithfulness": 0.0,
+      "context_relevance": 0.0,
+      "answer_relevance": 1.0,
+      "judge_rationale": "The generated answer contains detailed information not present in the provided context passages, resulting in a hallucination score of 0.0 for faithfulness, despite the answer being relevant to the user's question."
+    },
+    {
+      "query_id": "eval_q4",
+      "query": "What is the daily meal per diem and when are itemized receipts required?",
+      "is_answerable": true,
+      "generated_answer": "The daily meal per diem cap is $85 per day, which is allocated as follows: $20 for breakfast, $25 for lunch, and $40 for dinner [3].\n\nIndividual itemized receipts are required for any single meal expense that exceeds $25 [3]. Credit card summary slips that lack itemization will be rejected [3].",
+      "reference_answer": "The daily meal per diem cap is $85 per day ($20 for breakfast, $25 for lunch, $40 for dinner). Individual itemized receipts are required for any single meal expense exceeding $25.",
+      "citation_present": true,
+      "citation_valid": true,
+      "negative_rejection_correct": true,
+      "faithfulness": 0.0,
+      "context_relevance": 0.0,
+      "answer_relevance": 0.0,
+      "judge_rationale": "The model hallucinated information not present in the provided context passages, which contained no details regarding meal per diems or receipt requirements."
+    },
+    {
+      "query_id": "eval_q5",
+      "query": "What flight booking class is permitted for international flights exceeding 10 continuous flight hours?",
+      "is_answerable": true,
+      "generated_answer": "For international flights exceeding 10 continuous flight hours, Business Class is permitted, subject to written approval by the Chief Operating Officer (COO) [1].",
+      "reference_answer": "Business Class is permitted for flights exceeding 10 continuous flight hours, subject to written approval by the Chief Operating Officer (COO).",
+      "citation_present": true,
+      "citation_valid": true,
+      "negative_rejection_correct": true,
+      "faithfulness": 0.0,
+      "context_relevance": 0.0,
+      "answer_relevance": 1.0,
+      "judge_rationale": "The generated answer is a hallucination because the provided context passages contain no information regarding flight booking classes; the model correctly answers the question but fails the faithfulness metric as the information is not supported by the provided context."
+    },
+    {
+      "query_id": "eval_q6",
+      "query": "What are the guidelines for quantum computing cryptographic keys?",
+      "is_answerable": false,
+      "generated_answer": "The uploaded documents do not contain sufficient information regarding quantum computing cryptographic keys.",
+      "reference_answer": "The uploaded documents do not contain information regarding quantum computing cryptographic keys.",
+      "citation_present": false,
+      "citation_valid": true,
+      "negative_rejection_correct": true,
+      "faithfulness": 1.0,
+      "context_relevance": 0.0,
+      "answer_relevance": 1.0,
+      "judge_rationale": "The model correctly identified that the provided context documents do not contain information about quantum computing cryptographic keys, though the context relevance is 0.0 because the retrieved documents were entirely unrelated to the query."
+    }
+  ]
+}

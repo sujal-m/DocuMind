@@ -7,6 +7,24 @@ def test_health_check(client):
     data = res.json()
     assert data["status"] == "healthy"
 
+    res_v1 = client.get("/api/v1/health")
+    assert res_v1.status_code == 200
+    assert res_v1.json()["status"] == "healthy"
+
+def test_evaluation_benchmark_endpoint(client):
+    res = client.get("/api/v1/evaluation/benchmark")
+    assert res.status_code == 200
+    data = res.json()
+    assert isinstance(data, list)
+    assert len(data) >= 5
+    assert "query" in data[0]
+
+def test_evaluation_results_endpoint(client):
+    res = client.get("/api/v1/evaluation/results")
+    assert res.status_code == 200
+    # Either null if no runs, or summary object
+
+
 def test_document_upload_and_lifecycle(client):
     content = b"DocuMind Test Document Content. Testing text extraction and indexing."
     file = io.BytesIO(content)

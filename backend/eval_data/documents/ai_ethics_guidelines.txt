@@ -1,0 +1,28 @@
+# Responsible AI Ethics and Governance Charter
+Document Reference: AI-GOV-2025-01
+Effective Date: February 15, 2025
+
+1. Purpose and Guiding Principles
+The purpose of this Charter is to establish operational safeguards for developing and deploying artificial intelligence models across enterprise operations. All AI systems must adhere to four cardinal pillars: Fairness, Transparency, Accountability, and Robustness.
+
+2. Fairness and Bias Mitigation
+All datasets used for training or fine-tuning machine learning models must undergo statistical demographic parity tests before deployment.
+- Disparate impact ratio across protected groups must remain between 0.80 and 1.25.
+- Annual third-party bias audits are mandatory for any algorithm influencing hiring, credit decisions, or customer risk scoring.
+- When bias exceeds acceptable thresholds, the model must be placed in a canary containment mode or rolled back to an approved baseline.
+
+3. Human-in-the-Loop (HITL) Oversight
+Autonomous AI decision-making without direct human oversight is strictly prohibited in Tier-1 high-stakes workflows:
+- Medical triage and health recommendations require verification by a licensed medical practitioner.
+- Legal contract generation and financial loan rejections above $50,000 require human underwriter sign-off within 24 hours.
+- Automated moderation flags with user account suspension consequences must support human appeal within 48 hours.
+
+4. Data Privacy, Lineage, and Compliance
+- AI pipelines must comply fully with GDPR, CCPA, and ISO/IEC 42001 AI management standards.
+- Personal Identifiable Information (PII) must be masked using differential privacy techniques before ingestion into embedding stores or vector databases.
+- Models must not train on customer proprietary data unless an explicit opt-in data licensing consent agreement is executed.
+- Complete data lineage logs must be retained for at least 7 years for auditing purposes.
+
+5. Explainability and Incident Reporting
+- High-stakes models must output feature attribution scores (SHAP or Integrated Gradients) explaining decision factors.
+- Severe AI hallucinations causing financial harm or regulatory breach must be reported to the AI Ethics Board within 12 hours of discovery.
