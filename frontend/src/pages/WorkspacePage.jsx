@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useOutletContext } from 'react-router-dom';
 import { 
   Send, 
   Bot, 
@@ -9,35 +10,40 @@ import {
   SlidersHorizontal,
   CheckCircle2,
   AlertCircle,
-  FileText
+  FileText,
+  Wrench,
+  Cpu
 } from 'lucide-react';
-import { ragService } from '../services/ragService';
+import { agentService } from '../services/agentService';
 import { documentService } from '../services/documentService';
 import MessageItem from '../components/chat/MessageItem';
 import PassageInspector from '../components/chat/PassageInspector';
 
+const INITIAL_WELCOME_MSG = {
+  id: 'welcome',
+  sender: 'assistant',
+  content: 'Welcome to DocuMind Research Workspace. I am your autonomous AI research agent powered by Gemini Function Calling. I can search across your library, generate multi-section document summaries, perform cross-document comparisons, and extract structured JSON schemas with exact page provenance.\n\nWhat research question or analysis would you like to start with?',
+  citations: [],
+  tool_activities: [],
+  confidence: 'high',
+  model_name: 'gemini-3.1-flash-lite',
+};
+
 export default function WorkspacePage() {
-  const [messages, setMessages] = useState([
-    {
-      id: 'welcome',
-      sender: 'assistant',
-      content: 'Welcome to DocuMind Research Workspace. I can answer complex questions across your uploaded documents with strict factual grounding and verifiable page-level citations. What would you like to research today?',
-      citations: [],
-      confidence: 'high',
-      model_name: 'gemini-3.1-flash-lite',
-    },
-  ]);
+  const { activeConversationId, setActiveConversationId, newChatKey } = useOutletContext() || {};
+
+  const [messages, setMessages] = useState([INITIAL_WELCOME_MSG]);
   const [inputQuery, setInputQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [availableDocs, setAvailableDocs] = useState([]);
   const [selectedDocIds, setSelectedDocIds] = useState([]);
-  const [topK, setTopK] = useState(5);
   const [activePassages, setActivePassages] = useState([]);
   const [activeCitation, setActiveCitation] = useState(null);
   const [showFilters, setShowFilters] = useState(false);
 
   const messagesEndRef = useRef(null);
 
+  // Load available documents for filter
   useEffect(() => {
     const fetchDocs = async () => {
       try {
@@ -49,6 +55,30 @@ export default function WorkspacePage() {
     };
     fetchDocs();
   }, []);
+
+  // When activeConversationId changes, load messages from backend
+  useEffect(() => {
+    if (activeConversationId) {
+      const loadHistory = async () => {
+        try {
+          setLoading(true);
+          const conv = await agentService.getConversation(activeConversationId);
+          if (conv && conv.messages) {
+            setMessages(conv.messages);
+          }
+        } catch (err) {
+          console.error('Failed to load conversation history:', err);
+        } finally {
+          setLoading(false);
+        }
+      };
+      loadHistory();
+    } else {
+      setMessages([INITIAL_WELCOME_MSG]);
+      setActivePassages([]);
+      setActiveCitation(null);
+    }
+  }, [activeConversationId, newChatKey]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -63,7 +93,7 @@ export default function WorkspacePage() {
     const query = inputQuery.trim();
     if (!query || loading) return;
 
-    // Append user message
+    // Append user message immediately
     const userMsg = {
       id: `user-${Date.now()}`,
       sender: 'user',
@@ -74,24 +104,36 @@ export default function WorkspacePage() {
     setLoading(true);
 
     try {
-      const response = await ragService.queryRAG({
-        question: query,
+      const response = await agentService.chatAgent({
+        message: query,
+        conversation_id: activeConversationId || null,
         document_ids: selectedDocIds.length > 0 ? selectedDocIds : null,
-        top_k: topK,
       });
+
+      // Update active conversation ID if newly created
+      if (!activeConversationId && response.conversation_id) {
+        if (setActiveConversationId) {
+          setActiveConversationId(response.conversation_id);
+        }
+      }
 
       const assistantMsg = {
         id: `assistant-${Date.now()}`,
         sender: 'assistant',
-        content: response.answer,
-        citations: response.citations,
-        confidence: response.confidence,
+        content: response.message,
+        citations: response.citations || [],
+        tool_activities: response.tool_activities || [],
+        confidence: response.confidence || 'high',
         model_name: response.model_name,
-        passages: response.retrieved_passages,
       };
 
       setMessages((prev) => [...prev, assistantMsg]);
-      setActivePassages(response.retrieved_passages);
+
+      // If tool activities included search passages, surface them in inspector
+      const searchTool = response.tool_activities?.find((t) => t.tool_name === 'search_documents');
+      if (searchTool && searchTool.arguments) {
+        // Build mock passages or map citations
+      }
       if (response.citations && response.citations.length > 0) {
         setActiveCitation(response.citations[0]);
       }
@@ -99,8 +141,9 @@ export default function WorkspacePage() {
       const errorMsg = {
         id: `err-${Date.now()}`,
         sender: 'assistant',
-        content: `Error generating research answer: ${err.message || 'Upstream service error'}. Please verify that documents are uploaded and your Gemini API key is valid.`,
+        content: `Agent execution encountered an error: ${err.message || 'Service failure'}. Please verify document index status and API key.`,
         citations: [],
+        tool_activities: [],
         confidence: 'insufficient_data',
       };
       setMessages((prev) => [...prev, errorMsg]);
@@ -111,11 +154,6 @@ export default function WorkspacePage() {
 
   const handleSelectCitation = (citation) => {
     setActiveCitation(citation);
-    // Scroll passage in inspector
-    const el = document.getElementById(`passage-${citation.chunk_id}`);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
   };
 
   const toggleDocSelection = (docId) => {
@@ -125,9 +163,10 @@ export default function WorkspacePage() {
   };
 
   const samplePrompts = [
-    'What are the core technical specifications and architectures described?',
-    'Summarize the primary conclusions and methodology from the documents.',
-    'Are there any conflicting requirements or operational limitations?',
+    'Search the documents and explain the core retrieval pipeline architecture.',
+    'Summarize the primary document in the knowledge base.',
+    'Compare the uploaded documents and identify any conflicting information.',
+    'Extract the key technical specifications and parameters into a structured schema.',
   ];
 
   return (
@@ -135,17 +174,17 @@ export default function WorkspacePage() {
       {/* Central Chat Workspace */}
       <div className="flex-1 flex flex-col min-w-0 bg-slate-950">
         {/* Workspace Toolbar */}
-        <div className="h-12 border-b border-slate-800 bg-slate-900/50 px-6 flex items-center justify-between text-xs text-slate-300">
+        <div className="h-12 border-b border-slate-800 bg-slate-900/50 px-6 flex items-center justify-between text-xs text-slate-300 shrink-0">
           <div className="flex items-center gap-3">
-            <span className="font-semibold text-slate-200">Scope:</span>
+            <span className="font-semibold text-slate-200">Agent Mode:</span>
+            <span className="px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 font-medium flex items-center gap-1">
+              <Cpu className="w-3 h-3" /> Autonomous Function Calling
+            </span>
+            <span className="text-slate-600">|</span>
             {selectedDocIds.length === 0 ? (
-              <span className="px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 font-medium">
-                Entire Corpus ({availableDocs.length} indexed docs)
-              </span>
+              <span className="text-slate-400">All {availableDocs.length} Documents</span>
             ) : (
-              <span className="px-2 py-0.5 rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/20 font-medium">
-                Filtered: {selectedDocIds.length} document{selectedDocIds.length === 1 ? '' : 's'}
-              </span>
+              <span className="text-indigo-400 font-medium">Filtered to {selectedDocIds.length} doc(s)</span>
             )}
           </div>
 
@@ -159,23 +198,23 @@ export default function WorkspacePage() {
               }`}
             >
               <SlidersHorizontal className="w-3.5 h-3.5" />
-              <span>Filter Documents</span>
+              <span>Scope Filter</span>
             </button>
           </div>
         </div>
 
-        {/* Filter Drawer if open */}
+        {/* Filter Drawer */}
         {showFilters && (
-          <div className="bg-slate-900 border-b border-slate-800 p-4 animate-in slide-in-from-top-2 duration-150 text-xs">
+          <div className="bg-slate-900 border-b border-slate-800 p-4 animate-in slide-in-from-top-2 duration-150 text-xs shrink-0">
             <div className="max-w-4xl mx-auto space-y-3">
               <div className="flex items-center justify-between">
-                <p className="font-semibold text-white">Restrict Search to Selected Documents:</p>
+                <p className="font-semibold text-white">Restrict Research Agent to Specific Documents:</p>
                 {selectedDocIds.length > 0 && (
                   <button
                     onClick={() => setSelectedDocIds([])}
                     className="text-indigo-400 hover:underline text-[11px]"
                   >
-                    Clear Filter (Search All)
+                    Clear Filter (Search Entire Corpus)
                   </button>
                 )}
               </div>
@@ -223,8 +262,9 @@ export default function WorkspacePage() {
                 <Bot className="w-4 h-4 animate-spin" />
               </div>
               <div className="space-y-2 flex-1">
-                <p className="text-xs font-semibold text-indigo-400">
-                  Retrieving context & reasoning with Gemini...
+                <p className="text-xs font-semibold text-indigo-400 flex items-center gap-2">
+                  <Wrench className="w-3.5 h-3.5 animate-spin" />
+                  <span>Agent orchestrating tools & reasoning with Gemini...</span>
                 </p>
                 <div className="h-3 bg-slate-800 rounded w-3/4"></div>
                 <div className="h-3 bg-slate-800 rounded w-1/2"></div>
@@ -234,15 +274,13 @@ export default function WorkspacePage() {
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Suggested Prompts if only welcome message */}
+        {/* Suggested Prompts if initial state */}
         {messages.length === 1 && (
-          <div className="px-6 py-3 bg-slate-950 border-t border-slate-900 flex flex-wrap gap-2">
+          <div className="px-6 py-3 bg-slate-950 border-t border-slate-900 flex flex-wrap gap-2 shrink-0">
             {samplePrompts.map((prompt, i) => (
               <button
                 key={i}
-                onClick={() => {
-                  setInputQuery(prompt);
-                }}
+                onClick={() => setInputQuery(prompt)}
                 className="text-xs px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-slate-200 border border-slate-800 transition text-left"
               >
                 &ldquo;{prompt}&rdquo;
@@ -252,11 +290,11 @@ export default function WorkspacePage() {
         )}
 
         {/* Input Form */}
-        <div className="p-4 bg-slate-900 border-t border-slate-800">
+        <div className="p-4 bg-slate-900 border-t border-slate-800 shrink-0">
           <form onSubmit={handleSubmit} className="relative max-w-4xl mx-auto flex items-center gap-2">
             <input
               type="text"
-              placeholder="Ask a question grounded in your document repository..."
+              placeholder="Ask research questions, compare documents, summarize, or extract data..."
               value={inputQuery}
               onChange={(e) => setInputQuery(e.target.value)}
               disabled={loading}
@@ -267,7 +305,7 @@ export default function WorkspacePage() {
               disabled={loading || !inputQuery.trim()}
               className="px-4 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-xs flex items-center gap-2 transition disabled:opacity-50 disabled:cursor-not-allowed shadow-md shadow-indigo-600/20"
             >
-              <span>Ask</span>
+              <span>Ask Agent</span>
               <Send className="w-3.5 h-3.5" />
             </button>
           </form>

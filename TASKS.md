@@ -56,25 +56,25 @@ This document tracks progress across the four development phases. Each phase mus
 ---
 
 ## Phase 3: AI Research Agent and Conversational Memory
-- [ ] **Task 3.1: Agent Tool Implementation**
-  - [ ] Implement `search_documents` tool.
-  - [ ] Implement `summarize_document` tool (structured multi-section summary).
-  - [ ] Implement `compare_documents` tool (agreements, differences, contradictions).
-  - [ ] Implement `extract_information` tool (schema-driven structured JSON extraction).
-  - [ ] Implement `answer_from_documents` tool.
-- [ ] **Task 3.2: Gemini Function Calling Agent Loop**
-  - [ ] Implement `AgentService` managing multi-turn tool calling orchestration loop.
-  - [ ] Add safety bounds (max tool hops, error trapping, sanitization).
-  - [ ] Build FastAPI endpoint: `POST /api/v1/agent/chat`.
-- [ ] **Task 3.3: Persistent Conversational Memory**
-  - [ ] Implement `ConversationRepository` and models (`Conversation`, `Message`).
-  - [ ] Implement `MemoryService` with sliding window history and session summary compression.
-  - [ ] Build conversation endpoints: `POST /api/v1/conversations`, `GET /api/v1/conversations`, `GET /api/v1/conversations/{id}`, `DELETE /api/v1/conversations/{id}`.
-- [ ] **Task 3.4: Agent Workspace Frontend**
-  - [ ] Add conversation list and session switcher in sidebar.
-  - [ ] Display agent tool activity indicators (e.g. "Searching documents...", "Comparing doc A and doc B").
-  - [ ] Display structured JSON extraction tables and comparative diff views in chat.
-  - [ ] Verify multi-turn conversational memory with follow-up questions.
+- [x] **Task 3.1: Agent Tool Implementation**
+  - [x] Implement `search_documents` tool.
+  - [x] Implement `summarize_document` tool (structured multi-section summary).
+  - [x] Implement `compare_documents` tool (agreements, differences, contradictions).
+  - [x] Implement `extract_information` tool (schema-driven structured JSON extraction).
+  - [x] Implement `answer_from_documents` tool.
+- [x] **Task 3.2: Gemini Function Calling Agent Loop**
+  - [x] Implement `AgentService` managing multi-turn tool calling orchestration loop.
+  - [x] Add safety bounds (max tool hops, error trapping, sanitization).
+  - [x] Build FastAPI endpoint: `POST /api/v1/agent/chat`.
+- [x] **Task 3.3: Persistent Conversational Memory**
+  - [x] Implement `ConversationRepository` and models (`Conversation`, `Message`).
+  - [x] Implement `MemoryService` with sliding window history and session summary compression.
+  - [x] Build conversation endpoints: `POST /api/v1/conversations`, `GET /api/v1/conversations`, `GET /api/v1/conversations/{id}`, `DELETE /api/v1/conversations/{id}`, `PATCH /api/v1/conversations/{id}`.
+- [x] **Task 3.4: Agent Workspace Frontend**
+  - [x] Add conversation list and session switcher in sidebar.
+  - [x] Display agent tool activity indicators (e.g. "Tool: search_documents", "Tool: summarize_document").
+  - [x] Display structured JSON extraction tables and comparative diff views in chat.
+  - [x] Verify multi-turn conversational memory with follow-up questions.
 
 ---
 

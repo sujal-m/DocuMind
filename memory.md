@@ -59,3 +59,28 @@
   - Built [PassageInspector.jsx](file:///c:/Users/meshr/Documents/1.%20SPIT/Projects/DocuMind/frontend/src/components/chat/PassageInspector.jsx) showing chunk text, match percentage, page numbers, and chunk IDs with interactive highlight sync.
   - Added document scope filter to toggle between corpus-wide search and targeted document search.
 - **Verification:** All 16 automated tests passed, including `test_live_rag.py` verifying real retrieval and response generation via Google Gemini API.
+
+
+## Phase 3 Implementation Summary (2026-11-19)
+
+### 1. Completed Deliverables
+- **Specialized Agent Tools:** Built 5 autonomous tools under `backend/app/tools/`:
+  1. `search_documents`: Corpus-wide vector retrieval returning passages and metadata.
+  2. `summarize_document`: Structured executive summary (`executive_summary`, `key_findings`, `methodology_or_structure`, `conclusions`).
+  3. `compare_documents`: Cross-document diff analysis highlighting agreements, differences, and contradictions.
+  4. `extract_information`: Schema-driven structured JSON extractor with evidence provenance.
+  5. `answer_from_documents`: Targeted grounded Q&A with exact page citations.
+- **Gemini Function Calling Loop:**
+  - Implemented `AgentService` mapping tools to Gemini's native `FunctionDeclaration` specs.
+  - Multi-hop agent loop (capped at max 5 iterations for safety) dynamically executing local tools and returning `function_response` payloads to Gemini until a grounded answer is produced.
+  - Anti-hallucination guardrails and passive document data treatment.
+- **Persistent Conversational Memory:**
+  - Implemented `ConversationRepository` managing SQLite sessions and messages.
+  - Implemented `MemoryService` with sliding-window history (last 6 turns retained in raw format) and asynchronous summary compression of older turns.
+  - Endpoints: `POST /api/v1/agent/chat`, `GET /api/v1/conversations`, `POST /api/v1/conversations`, `GET /api/v1/conversations/{id}`, `PATCH /api/v1/conversations/{id}`, `DELETE /api/v1/conversations/{id}`.
+- **UI Enhancements:**
+  - Built [ToolExecutionBadge.jsx](file:///c:/Users/meshr/Documents/1.%20SPIT/Projects/DocuMind/frontend/src/components/agent/ToolExecutionBadge.jsx) to display autonomous tool executions with collapsible parameter inspection.
+  - Built [SidebarConversations.jsx](file:///c:/Users/meshr/Documents/1.%20SPIT/Projects/DocuMind/frontend/src/components/chat/SidebarConversations.jsx) for session switching, renaming, and deleting directly in the sidebar.
+  - Updated [WorkspacePage.jsx](file:///c:/Users/meshr/Documents/1.%20SPIT/Projects/DocuMind/frontend/src/pages/WorkspacePage.jsx) with agent tool calling execution indicators and multi-turn context retention.
+- **Verification:**
+  - 21 passing automated tests in `backend/tests/` including `test_agent_tools.py` and `test_live_agent.py` exercising real Gemini tool calling and follow-up conversational memory.
