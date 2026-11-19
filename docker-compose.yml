@@ -36,3 +36,4 @@ services:
 volumes:
   documind-data:
     driver: local
+

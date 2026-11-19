@@ -2,7 +2,7 @@ import json
 from typing import Any, Dict, List, Optional
 from sqlalchemy.orm import Session
 
-from backend.app.tools.base import AgentTool, ToolResult
+from backend.app.tools.base import AgentTool, ToolResult, resolve_document
 from backend.app.database.repositories.document_repo import DocumentRepository
 from backend.app.database.repositories.chunk_repo import ChunkRepository
 from backend.app.services.gemini_service import GeminiService
@@ -18,7 +18,7 @@ class SummarizeDocumentTool(AgentTool):
         "properties": {
             "document_id": {
                 "type": "string",
-                "description": "The exact UUID of the document to summarize."
+                "description": "The exact UUID or filename of the document to summarize."
             },
             "focus_areas": {
                 "type": "array",
@@ -37,11 +37,11 @@ class SummarizeDocumentTool(AgentTool):
 
     def execute(self, document_id: str, focus_areas: Optional[List[str]] = None) -> ToolResult:
         try:
-            doc = self.doc_repo.get_by_id(document_id)
+            doc = resolve_document(self.doc_repo, document_id)
             if not doc:
-                return ToolResult(success=False, data=None, error=f"Document with ID '{document_id}' not found.")
+                return ToolResult(success=False, data=None, error=f"Document with ID or name '{document_id}' not found.")
 
-            chunks = self.chunk_repo.get_by_document_id(document_id)
+            chunks = self.chunk_repo.get_by_document_id(doc.id)
             if not chunks:
                 return ToolResult(success=False, data=None, error=f"No text chunks found for document '{doc.original_name}'.")
 

@@ -99,3 +99,4 @@ def test_evaluate_answer_negative_rejection(db_session):
     ans_res = eval_service.evaluate_answer_query(unanswerable_item, use_llm_judge=False)
     assert ans_res.negative_rejection_correct is True
     assert ans_res.faithfulness == 1.0
+

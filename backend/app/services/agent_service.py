@@ -9,6 +9,7 @@ from backend.app.core.config import settings
 from backend.app.core.logging import logger
 from backend.app.models import Conversation, Message
 from backend.app.database.repositories.conversation_repo import ConversationRepository
+from backend.app.database.repositories.document_repo import DocumentRepository
 from backend.app.schemas.rag import Citation
 from backend.app.schemas.agent import AgentChatRequest, AgentChatResponse, ToolActivity
 from backend.app.services.gemini_service import GeminiService
@@ -36,6 +37,7 @@ class AgentService:
     def __init__(self, db: Session):
         self.db = db
         self.conv_repo = ConversationRepository(db)
+        self.doc_repo = DocumentRepository(db)
         self.memory_service = MemoryService(db, window_size=6)
         self.gemini_service = GeminiService()
 
@@ -129,6 +131,19 @@ class AgentService:
         system_instruction = SYSTEM_AGENT_PROMPT
         if running_summary:
             system_instruction += f"\n\n{running_summary}"
+
+        # Inject available indexed documents inventory so agent knows valid document names & IDs
+        try:
+            all_docs = self.doc_repo.get_all()
+            indexed_docs = [d for d in all_docs if d.status == "indexed"]
+            if indexed_docs:
+                docs_summary = "Available Indexed Documents in Knowledge Base:\n" + "\n".join([
+                    f"- \"{d.original_name}\" (ID: \"{d.id}\", Pages: {d.page_count}, Chunks: {d.chunk_count})"
+                    for d in indexed_docs
+                ])
+                system_instruction += f"\n\n{docs_summary}\nWhen a tool requires document_id, you can provide either its exact UUID or its filename."
+        except Exception as e:
+            logger.warning(f"Could not inject indexed documents into prompt: {e}")
 
         tool_declarations = self._build_tool_declarations()
 

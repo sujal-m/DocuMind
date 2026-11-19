@@ -28,3 +28,4 @@ a) Customer configurations, custom code, or unsupported third-party software.
 b) Denial of Service (DDoS) attacks exceeding 500 Gbps where Customer has not purchased Enterprise Shield protection.
 c) DNS failures outside CloudCore's authoritative nameservers.
 d) Force majeure events including civil unrest, natural disasters, and global telecommunication backbone severed cables.
+

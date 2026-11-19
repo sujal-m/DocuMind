@@ -2,7 +2,7 @@ import json
 from typing import Any, Dict, List, Optional
 from sqlalchemy.orm import Session
 
-from backend.app.tools.base import AgentTool, ToolResult
+from backend.app.tools.base import AgentTool, ToolResult, resolve_document
 from backend.app.database.repositories.document_repo import DocumentRepository
 from backend.app.database.repositories.chunk_repo import ChunkRepository
 from backend.app.services.gemini_service import GeminiService
@@ -45,10 +45,10 @@ class CompareDocumentsTool(AgentTool):
             doc_meta_list = []
 
             for doc_id in document_ids:
-                doc = self.doc_repo.get_by_id(doc_id)
+                doc = resolve_document(self.doc_repo, doc_id)
                 if not doc:
                     return ToolResult(success=False, data=None, error=f"Document '{doc_id}' not found.")
-                chunks = self.chunk_repo.get_by_document_id(doc_id)
+                chunks = self.chunk_repo.get_by_document_id(doc.id)
                 # Sample up to 8 key chunks
                 sampled = chunks[:8]
                 doc_text = "\n".join([f"[Page {c.page_number}]: {c.content[:400]}" for c in sampled])

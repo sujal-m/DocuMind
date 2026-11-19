@@ -26,3 +26,4 @@ Autonomous AI decision-making without direct human oversight is strictly prohibi
 5. Explainability and Incident Reporting
 - High-stakes models must output feature attribution scores (SHAP or Integrated Gradients) explaining decision factors.
 - Severe AI hallucinations causing financial harm or regulatory breach must be reported to the AI Ethics Board within 12 hours of discovery.
+

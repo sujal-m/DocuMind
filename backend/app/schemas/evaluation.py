@@ -57,3 +57,4 @@ class EvaluationSummary(BaseModel):
     answer_results: List[QueryAnswerResult]
 
     model_config = ConfigDict(from_attributes=True)
+
